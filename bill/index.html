@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日日加｜10/17 到貨帳單一鍵轉發 (24家)</title>
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0;
+      padding: 14px 12px 40px;
+      background: #eef1f5;
+      color: #1f2937;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .top-bar {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .top-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111827;
+    }
+    .top-sub {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+    .search-input {
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 14px;
+      width: 180px;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: #06c755;
+    }
+    .store-card {
+      position: relative;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 20px 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: opacity 0.2s ease;
+    }
+    .store-card.sent {
+      border-left: 4px solid #06c755;
+    }
+    .sent-badge {
+      display: none;
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .store-card.sent .sent-badge {
+      display: inline-block;
+    }
+    .msg-text {
+      white-space: pre-wrap;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #1f2937;
+      margin-bottom: 14px;
+      word-break: break-word;
+    }
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .btn-line, .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: filter 0.15s ease, transform 0.1s ease;
+    }
+    .btn-line {
+      background: #06c755;
+      color: #ffffff;
+    }
+    .btn-line:hover {
+      filter: brightness(0.95);
+    }
+    .btn-line:active, .btn-copy:active {
+      transform: scale(0.99);
+    }
+    .btn-copy {
+      background: #e5e7eb;
+      color: #1f2937;
+    }
+    .btn-copy:hover {
+      background: #d1d5db;
+    }
+    .btn-copy.copied {
+      background: #d1fae5;
+      color: #065f46;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <div>
+        <div class="top-title">💰 日日加｜各店到貨帳單一鍵轉發 (2026-10-17)</div>
+        <div class="top-sub">待繳門店：24 家 ｜ 全店未付總計：$2,092,750</div>
+      </div>
+      <input type="text" class="search-input" placeholder="🔍 搜尋門店名稱..." oninput="filterCards(this.value)" />
+    </div>
+
+    <div id="cardsList">
+      
+      <div class="store-card" id="card-0" data-store="竹南博愛店">
+        <div class="sent-badge" id="badge-0">✓ 已處理</div>
+        <div class="msg-text" id="msg-0">竹南博愛店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $355,677
+📅10/16 : $4,014
+📅10/14 : $16,199
+📅10/12 : $7,643
+📅10/7 : $327,821</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E7%AB%B9%E5%8D%97%E5%8D%9A%E6%84%9B%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%24355%2C677%0A%F0%9F%93%8510%2F16%20%3A%20%244%2C014%0A%F0%9F%93%8510%2F14%20%3A%20%2416%2C199%0A%F0%9F%93%8510%2F12%20%3A%20%247%2C643%0A%F0%9F%93%8510%2F7%20%3A%20%24327%2C821" target="_blank" rel="noopener" onclick="markSent(0)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-0" onclick="copyMsg(0)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-1" data-store="香山牛埔店">
+        <div class="sent-badge" id="badge-1">✓ 已處理</div>
+        <div class="msg-text" id="msg-1">香山牛埔店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $288,716
+📅10/16 : $6,123
+📅10/15 : $8,777
+📅10/13 : $7,643
+📅10/8 : $266,173</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E9%A6%99%E5%B1%B1%E7%89%9B%E5%9F%94%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%24288%2C716%0A%F0%9F%93%8510%2F16%20%3A%20%246%2C123%0A%F0%9F%93%8510%2F15%20%3A%20%248%2C777%0A%F0%9F%93%8510%2F13%20%3A%20%247%2C643%0A%F0%9F%93%8510%2F8%20%3A%20%24266%2C173" target="_blank" rel="noopener" onclick="markSent(1)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-1" onclick="copyMsg(1)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-2" data-store="頭份建國店">
+        <div class="sent-badge" id="badge-2">✓ 已處理</div>
+        <div class="msg-text" id="msg-2">頭份建國店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $14,942
+📅10/16 : $14,942</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E9%A0%AD%E4%BB%BD%E5%BB%BA%E5%9C%8B%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2414%2C942%0A%F0%9F%93%8510%2F16%20%3A%20%2414%2C942" target="_blank" rel="noopener" onclick="markSent(2)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-2" onclick="copyMsg(2)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-3" data-store="八德大福店">
+        <div class="sent-badge" id="badge-3">✓ 已處理</div>
+        <div class="msg-text" id="msg-3">八德大福店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $89,800
+📅10/16 : $15,930
+📅10/15 : $21,998
+📅10/14 : $9,951
+📅10/13 : $13,768
+📅10/12 : $13,678
+📅10/8 : $14,475</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E5%85%AB%E5%BE%B7%E5%A4%A7%E7%A6%8F%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2489%2C800%0A%F0%9F%93%8510%2F16%20%3A%20%2415%2C930%0A%F0%9F%93%8510%2F15%20%3A%20%2421%2C998%0A%F0%9F%93%8510%2F14%20%3A%20%249%2C951%0A%F0%9F%93%8510%2F13%20%3A%20%2413%2C768%0A%F0%9F%93%8510%2F12%20%3A%20%2413%2C678%0A%F0%9F%93%8510%2F8%20%3A%20%2414%2C475" target="_blank" rel="noopener" onclick="markSent(3)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-3" onclick="copyMsg(3)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-4" data-store="桃園新埔店">
+        <div class="sent-badge" id="badge-4">✓ 已處理</div>
+        <div class="msg-text" id="msg-4">桃園新埔店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $31,381
+📅10/16 : $10,496
+📅10/15 : $15,645
+📅10/14 : $5,240</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E6%A1%83%E5%9C%92%E6%96%B0%E5%9F%94%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2431%2C381%0A%F0%9F%93%8510%2F16%20%3A%20%2410%2C496%0A%F0%9F%93%8510%2F15%20%3A%20%2415%2C645%0A%F0%9F%93%8510%2F14%20%3A%20%245%2C240" target="_blank" rel="noopener" onclick="markSent(4)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-4" onclick="copyMsg(4)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-5" data-store="中壢龍江店">
+        <div class="sent-badge" id="badge-5">✓ 已處理</div>
+        <div class="msg-text" id="msg-5">中壢龍江店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $12,002
+📅10/16 : $12,002</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E4%B8%AD%E5%A3%A2%E9%BE%8D%E6%B1%9F%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2412%2C002%0A%F0%9F%93%8510%2F16%20%3A%20%2412%2C002" target="_blank" rel="noopener" onclick="markSent(5)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-5" onclick="copyMsg(5)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-6" data-store="竹北勝利店">
+        <div class="sent-badge" id="badge-6">✓ 已處理</div>
+        <div class="msg-text" id="msg-6">竹北勝利店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $17,773
+📅10/16 : $6,205
+📅10/15 : $11,568</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E7%AB%B9%E5%8C%97%E5%8B%9D%E5%88%A9%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2417%2C773%0A%F0%9F%93%8510%2F16%20%3A%20%246%2C205%0A%F0%9F%93%8510%2F15%20%3A%20%2411%2C568" target="_blank" rel="noopener" onclick="markSent(6)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-6" onclick="copyMsg(6)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-7" data-store="新竹金山店">
+        <div class="sent-badge" id="badge-7">✓ 已處理</div>
+        <div class="msg-text" id="msg-7">新竹金山店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $48,983
+📅10/16 : $13,235
+📅10/15 : $15,111
+📅10/14 : $10,632
+📅10/13 : $10,005</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E6%96%B0%E7%AB%B9%E9%87%91%E5%B1%B1%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2448%2C983%0A%F0%9F%93%8510%2F16%20%3A%20%2413%2C235%0A%F0%9F%93%8510%2F15%20%3A%20%2415%2C111%0A%F0%9F%93%8510%2F14%20%3A%20%2410%2C632%0A%F0%9F%93%8510%2F13%20%3A%20%2410%2C005" target="_blank" rel="noopener" onclick="markSent(7)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-7" onclick="copyMsg(7)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-8" data-store="竹北縣政店">
+        <div class="sent-badge" id="badge-8">✓ 已處理</div>
+        <div class="msg-text" id="msg-8">竹北縣政店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $47,830
+📅10/16 : $9,392
+📅10/15 : $17,810
+📅10/14 : $9,987
+📅10/13 : $10,641</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E7%AB%B9%E5%8C%97%E7%B8%A3%E6%94%BF%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2447%2C830%0A%F0%9F%93%8510%2F16%20%3A%20%249%2C392%0A%F0%9F%93%8510%2F15%20%3A%20%2417%2C810%0A%F0%9F%93%8510%2F14%20%3A%20%249%2C987%0A%F0%9F%93%8510%2F13%20%3A%20%2410%2C641" target="_blank" rel="noopener" onclick="markSent(8)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-8" onclick="copyMsg(8)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-9" data-store="竹東中正店">
+        <div class="sent-badge" id="badge-9">✓ 已處理</div>
+        <div class="msg-text" id="msg-9">竹東中正店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $45,012
+📅10/16 : $15,506
+📅10/15 : $29,506</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E7%AB%B9%E6%9D%B1%E4%B8%AD%E6%AD%A3%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2445%2C012%0A%F0%9F%93%8510%2F16%20%3A%20%2415%2C506%0A%F0%9F%93%8510%2F15%20%3A%20%2429%2C506" target="_blank" rel="noopener" onclick="markSent(9)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-9" onclick="copyMsg(9)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-10" data-store="八德建國店">
+        <div class="sent-badge" id="badge-10">✓ 已處理</div>
+        <div class="msg-text" id="msg-10">八德建國店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $21,104
+📅10/16 : $21,104</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E5%85%AB%E5%BE%B7%E5%BB%BA%E5%9C%8B%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2421%2C104%0A%F0%9F%93%8510%2F16%20%3A%20%2421%2C104" target="_blank" rel="noopener" onclick="markSent(10)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-10" onclick="copyMsg(10)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-11" data-store="楊梅新成店">
+        <div class="sent-badge" id="badge-11">✓ 已處理</div>
+        <div class="msg-text" id="msg-11">楊梅新成店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $55,411
+📅10/16 : $18,597
+📅10/15 : $36,814</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E6%A5%8A%E6%A2%85%E6%96%B0%E6%88%90%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2455%2C411%0A%F0%9F%93%8510%2F16%20%3A%20%2418%2C597%0A%F0%9F%93%8510%2F15%20%3A%20%2436%2C814" target="_blank" rel="noopener" onclick="markSent(11)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-11" onclick="copyMsg(11)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-12" data-store="新竹南大店">
+        <div class="sent-badge" id="badge-12">✓ 已處理</div>
+        <div class="msg-text" id="msg-12">新竹南大店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $29,572
+📅10/16 : $29,572</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E6%96%B0%E7%AB%B9%E5%8D%97%E5%A4%A7%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2429%2C572%0A%F0%9F%93%8510%2F16%20%3A%20%2429%2C572" target="_blank" rel="noopener" onclick="markSent(12)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-12" onclick="copyMsg(12)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-13" data-store="龍潭龍元店">
+        <div class="sent-badge" id="badge-13">✓ 已處理</div>
+        <div class="msg-text" id="msg-13">龍潭龍元店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $64,596
+📅10/16 : $34,013
+📅10/15 : $30,583</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E9%BE%8D%E6%BD%AD%E9%BE%8D%E5%85%83%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2464%2C596%0A%F0%9F%93%8510%2F16%20%3A%20%2434%2C013%0A%F0%9F%93%8510%2F15%20%3A%20%2430%2C583" target="_blank" rel="noopener" onclick="markSent(13)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-13" onclick="copyMsg(13)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-14" data-store="蘆竹大竹店">
+        <div class="sent-badge" id="badge-14">✓ 已處理</div>
+        <div class="msg-text" id="msg-14">蘆竹大竹店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $22,688
+📅10/16 : $22,688</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E8%98%86%E7%AB%B9%E5%A4%A7%E7%AB%B9%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2422%2C688%0A%F0%9F%93%8510%2F16%20%3A%20%2422%2C688" target="_blank" rel="noopener" onclick="markSent(14)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-14" onclick="copyMsg(14)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-15" data-store="桃園宏昌店">
+        <div class="sent-badge" id="badge-15">✓ 已處理</div>
+        <div class="msg-text" id="msg-15">桃園宏昌店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $119,764
+📅10/16 : $40,046
+📅10/15 : $35,017
+📅10/14 : $44,701</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E6%A1%83%E5%9C%92%E5%AE%8F%E6%98%8C%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%24119%2C764%0A%F0%9F%93%8510%2F16%20%3A%20%2440%2C046%0A%F0%9F%93%8510%2F15%20%3A%20%2435%2C017%0A%F0%9F%93%8510%2F14%20%3A%20%2444%2C701" target="_blank" rel="noopener" onclick="markSent(15)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-15" onclick="copyMsg(15)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-16" data-store="新竹北大店">
+        <div class="sent-badge" id="badge-16">✓ 已處理</div>
+        <div class="msg-text" id="msg-16">新竹北大店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $204,467
+📅10/16 : $33,019
+📅10/15 : $32,104
+📅10/14 : $36,822
+📅10/13 : $29,868
+📅10/12 : $27,576
+📅10/8 : $27,942
+📅10/7 : $17,136</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E6%96%B0%E7%AB%B9%E5%8C%97%E5%A4%A7%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%24204%2C467%0A%F0%9F%93%8510%2F16%20%3A%20%2433%2C019%0A%F0%9F%93%8510%2F15%20%3A%20%2432%2C104%0A%F0%9F%93%8510%2F14%20%3A%20%2436%2C822%0A%F0%9F%93%8510%2F13%20%3A%20%2429%2C868%0A%F0%9F%93%8510%2F12%20%3A%20%2427%2C576%0A%F0%9F%93%8510%2F8%20%3A%20%2427%2C942%0A%F0%9F%93%8510%2F7%20%3A%20%2417%2C136" target="_blank" rel="noopener" onclick="markSent(16)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-16" onclick="copyMsg(16)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-17" data-store="內壢莊敬店">
+        <div class="sent-badge" id="badge-17">✓ 已處理</div>
+        <div class="msg-text" id="msg-17">內壢莊敬店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $138,916
+📅10/16 : $45,761
+📅10/15 : $50,398
+📅10/14 : $42,757</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E5%85%A7%E5%A3%A2%E8%8E%8A%E6%95%AC%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%24138%2C916%0A%F0%9F%93%8510%2F16%20%3A%20%2445%2C761%0A%F0%9F%93%8510%2F15%20%3A%20%2450%2C398%0A%F0%9F%93%8510%2F14%20%3A%20%2442%2C757" target="_blank" rel="noopener" onclick="markSent(17)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-17" onclick="copyMsg(17)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-18" data-store="新竹科學店">
+        <div class="sent-badge" id="badge-18">✓ 已處理</div>
+        <div class="msg-text" id="msg-18">新竹科學店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $22,700
+📅10/16 : $22,700</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E6%96%B0%E7%AB%B9%E7%A7%91%E5%AD%B8%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2422%2C700%0A%F0%9F%93%8510%2F16%20%3A%20%2422%2C700" target="_blank" rel="noopener" onclick="markSent(18)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-18" onclick="copyMsg(18)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-19" data-store="蘆竹南昌店">
+        <div class="sent-badge" id="badge-19">✓ 已處理</div>
+        <div class="msg-text" id="msg-19">蘆竹南昌店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $64,896
+📅10/16 : $30,556
+📅10/15 : $34,340</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E8%98%86%E7%AB%B9%E5%8D%97%E6%98%8C%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2464%2C896%0A%F0%9F%93%8510%2F16%20%3A%20%2430%2C556%0A%F0%9F%93%8510%2F15%20%3A%20%2434%2C340" target="_blank" rel="noopener" onclick="markSent(19)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-19" onclick="copyMsg(19)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-20" data-store="龜山中興店">
+        <div class="sent-badge" id="badge-20">✓ 已處理</div>
+        <div class="msg-text" id="msg-20">龜山中興店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $26,534
+📅10/16 : $26,534</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E9%BE%9C%E5%B1%B1%E4%B8%AD%E8%88%88%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2426%2C534%0A%F0%9F%93%8510%2F16%20%3A%20%2426%2C534" target="_blank" rel="noopener" onclick="markSent(20)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-20" onclick="copyMsg(20)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-21" data-store="桃園東國店">
+        <div class="sent-badge" id="badge-21">✓ 已處理</div>
+        <div class="msg-text" id="msg-21">桃園東國店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $22,759
+📅10/16 : $22,759</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E6%A1%83%E5%9C%92%E6%9D%B1%E5%9C%8B%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2422%2C759%0A%F0%9F%93%8510%2F16%20%3A%20%2422%2C759" target="_blank" rel="noopener" onclick="markSent(21)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-21" onclick="copyMsg(21)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-22" data-store="平鎮中豐店">
+        <div class="sent-badge" id="badge-22">✓ 已處理</div>
+        <div class="msg-text" id="msg-22">平鎮中豐店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $24,902
+📅10/16 : $24,902</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E5%B9%B3%E9%8E%AE%E4%B8%AD%E8%B1%90%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%2424%2C902%0A%F0%9F%93%8510%2F16%20%3A%20%2424%2C902" target="_blank" rel="noopener" onclick="markSent(22)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-22" onclick="copyMsg(22)">複製</button>
+        </div>
+      </div>
+
+      <div class="store-card" id="card-23" data-store="中壢中北店">
+        <div class="sent-badge" id="badge-23">✓ 已處理</div>
+        <div class="msg-text" id="msg-23">中壢中北店
+💰10/17 到貨帳單待繳提醒💰
+麻煩協助確認以下待繳帳單並安排匯款唷🙏🏻
+💵未付合計 : $322,325
+📅10/16 : $33,108
+📅10/15 : $28,396
+📅10/14 : $30,139
+📅10/13 : $35,103
+📅10/12 : $23,266
+📅10/8 : $30,833
+📅10/7 : $27,001
+📅10/6 : $28,714
+📅10/5 : $33,837
+📅10/2 : $30,454
+📅10/1 : $23,235</div>
+        <div class="btn-row">
+          <a class="btn-line" href="https://line.me/R/share?text=%E4%B8%AD%E5%A3%A2%E4%B8%AD%E5%8C%97%E5%BA%97%0A%F0%9F%92%B010%2F17%20%E5%88%B0%E8%B2%A8%E5%B8%B3%E5%96%AE%E5%BE%85%E7%B9%B3%E6%8F%90%E9%86%92%F0%9F%92%B0%0A%E9%BA%BB%E7%85%A9%E5%8D%94%E5%8A%A9%E7%A2%BA%E8%AA%8D%E4%BB%A5%E4%B8%8B%E5%BE%85%E7%B9%B3%E5%B8%B3%E5%96%AE%E4%B8%A6%E5%AE%89%E6%8E%92%E5%8C%AF%E6%AC%BE%E5%94%B7%F0%9F%99%8F%F0%9F%8F%BB%0A%F0%9F%92%B5%E6%9C%AA%E4%BB%98%E5%90%88%E8%A8%88%20%3A%20%24322%2C325%0A%F0%9F%93%8510%2F16%20%3A%20%2433%2C108%0A%F0%9F%93%8510%2F15%20%3A%20%2428%2C396%0A%F0%9F%93%8510%2F14%20%3A%20%2430%2C139%0A%F0%9F%93%8510%2F13%20%3A%20%2435%2C103%0A%F0%9F%93%8510%2F12%20%3A%20%2423%2C266%0A%F0%9F%93%8510%2F8%20%3A%20%2430%2C833%0A%F0%9F%93%8510%2F7%20%3A%20%2427%2C001%0A%F0%9F%93%8510%2F6%20%3A%20%2428%2C714%0A%F0%9F%93%8510%2F5%20%3A%20%2433%2C837%0A%F0%9F%93%8510%2F2%20%3A%20%2430%2C454%0A%F0%9F%93%8510%2F1%20%3A%20%2423%2C235" target="_blank" rel="noopener" onclick="markSent(23)">LINE 傳送</a>
+          <button type="button" class="btn-copy" id="copybtn-23" onclick="copyMsg(23)">複製</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function markSent(idx) {
+      const card = document.getElementById('card-' + idx);
+      if (card) card.classList.add('sent');
+    }
+
+    async function copyMsg(idx) {
+      const msgEl = document.getElementById('msg-' + idx);
+      const btn = document.getElementById('copybtn-' + idx);
+      if (!msgEl || !btn) return;
+      const text = msgEl.innerText;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (e) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+      }
+      markSent(idx);
+      const orig = btn.textContent;
+      btn.textContent = '✅ 已複製';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.classList.remove('copied');
+      }, 1800);
+    }
+
+    function filterCards(q) {
+      const kw = (q || '').trim().toLowerCase();
+      const cards = document.querySelectorAll('.store-card');
+      cards.forEach(c => {
+        const name = (c.getAttribute('data-store') || '').toLowerCase();
+        c.style.display = (!kw || name.includes(kw)) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
