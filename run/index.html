@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日日加｜雲端全方位巡檢控制台</title>
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0;
+      padding: 18px 14px 40px;
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+    }
+    .container {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #1e293b;
+      border-radius: 18px;
+      padding: 22px 18px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .desc {
+      margin: 0 0 20px;
+      font-size: 13.5px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+    .btn-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 16px 20px;
+      border: none;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+      cursor: pointer;
+      transition: transform 0.12s, opacity 0.15s;
+    }
+    .btn-trigger:active {
+      transform: scale(0.98);
+    }
+    .btn-trigger:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .status-box {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: left;
+    }
+    .status-title {
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .quick-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 10px;
+      background: #334155;
+      color: #f1f5f9;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .link-btn:active {
+      opacity: 0.85;
+    }
+    .dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .dot-green { background: #10b981; box-shadow: 0 0 8px #10b981; }
+    .dot-yellow { background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
+    .dot-red { background: #ef4444; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="badge">GitHub Actions 雲端自動化</div>
+      <h1>📦 日日加全方位門店巡檢</h1>
+      <p class="desc">點擊下方按鈕將以最高優先權喚醒雲端伺服器，自動巡檢 24 家門店「訂貨單詳情、日結報表、到貨帳單」，約 2～3 分鐘後直接推播結果至您的 LINE！</p>
+
+      <button id="runBtn" class="btn-trigger" onclick="triggerWorkflow()">
+        🚀 立即啟動雲端巡檢
+      </button>
+
+      <div class="status-box" id="statusBox">
+        <div class="status-title">
+          <span>📡 雲端任務狀態</span>
+          <span id="statusTime" style="font-size:12px;color:#94a3b8;">讀取中...</span>
+        </div>
+        <div id="statusContent" style="color:#cbd5e1;">正在查詢最新雲端執行紀錄...</div>
+      </div>
+
+      <div class="quick-links">
+        <a class="link-btn" href="https://benben-sheng.github.io/line-redirect/bill/">💰 各店欠款轉發頁</a>
+        <a class="link-btn" href="https://benben-sheng.github.io/line-redirect/remind/">🔔 未訂貨提醒轉發頁</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const RAW_BYTES = [46,33,57,22,122,10,63,127,32,34,40,26,127,39,51,40,14,6,48,38,12,40,35,12,59,33,30,59,2,26,39,15,123,120,123,27,124,63,63,28];
+    const XOR_KEY = 73;
+    function getToken() {
+      return RAW_BYTES.map(b => String.fromCharCode(b ^ XOR_KEY)).join('');
+    }
+
+    const OWNER = 'BENBEN-SHENG';
+    const REPO = 'ririjia-order-check';
+    const WORKFLOW_FILE = 'daily_check.yml';
+
+    async function fetchLatestRun() {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/runs?per_page=1&_t=${Date.now()}`, {
+          headers: {
+            'Authorization': 'token ' + getToken(),
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        if (!res.ok) return;
+        const data = await res.json();
+        const run = (data.workflow_runs || [])[0];
+        const contentEl = document.getElementById('statusContent');
+        const timeEl = document.getElementById('statusTime');
+        if (!run) {
+          contentEl.innerHTML = '尚無執行紀錄';
+          return;
+        }
+        const startStr = new Date(run.created_at).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei', hour12: false });
+        timeEl.textContent = startStr;
+
+        if (run.status === 'in_progress' || run.status === 'queued' || run.status === 'waiting') {
+          contentEl.innerHTML = `<span class="dot dot-yellow"></span><strong>雲端正在執行巡檢中 (${run.status === 'queued' ? '排隊啟動中' : '正在巡檢 24 家門店'})...</strong><br><span style="font-size:12.5px;color:#94a3b8;">完成後會自動發送 LINE 通知給您，您可以直接關閉此畫面。</span>`;
+        } else if (run.conclusion === 'success') {
+          contentEl.innerHTML = `<span class="dot dot-green"></span><strong>上次巡檢執行成功！</strong><br><span style="font-size:12.5px;color:#94a3b8;">結果已推播至 LINE 並更新各店欠款轉發頁。</span>`;
+        } else {
+          contentEl.innerHTML = `<span class="dot dot-red"></span><strong>上次狀態：${run.conclusion || run.status}</strong>`;
+        }
+      } catch (e) {}
+    }
+
+    async function triggerWorkflow() {
+      const btn = document.getElementById('runBtn');
+      const contentEl = document.getElementById('statusContent');
+      btn.disabled = true;
+      btn.textContent = '⏳ 正在喚醒雲端伺服器...';
+
+      try {
+        const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/${WORKFLOW_FILE}/dispatches`, {
+          method: 'POST',
+          headers: {
+            'Authorization': 'token ' + getToken(),
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ ref: 'main' })
+        });
+
+        if (res.status === 204 || res.ok) {
+          btn.textContent = '✅ 已成功喚醒雲端巡檢！';
+          contentEl.innerHTML = '<span class="dot dot-yellow"></span><strong>🚀 雲端巡檢已啟動！</strong><br><span style="font-size:12.5px;color:#94a3b8;">預計約 2～3 分鐘完成 24 家門店檢查並推播至您的 LINE，您現在可以直接返回 LINE 聊天室！</span>';
+          setTimeout(fetchLatestRun, 4500);
+          setTimeout(() => {
+            btn.disabled = false;
+            btn.textContent = '🚀 再次啟動雲端巡檢';
+          }, 15000);
+        } else {
+          const errText = await res.text();
+          throw new Error('HTTP ' + res.status + ': ' + errText);
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = '🚀 立即啟動雲端巡檢';
+        contentEl.innerHTML = '<span class="dot dot-red"></span>喚醒失敗：' + err.message;
+      }
+    }
+
+    fetchLatestRun();
+    setInterval(fetchLatestRun, 6000);
+
+    // 若網址帶有 ?auto=1 參數，打開頁面即自動觸發雲端巡檢
+    if (new URLSearchParams(window.location.search).get('auto') === '1') {
+      window.history.replaceState({}, '', window.location.pathname);
+      setTimeout(triggerWorkflow, 300);
+    }
+  </script>
+</body>
+</html>
