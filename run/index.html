@@ -127,7 +127,7 @@
     <div class="card">
       <div class="badge">GitHub Actions 雲端自動化</div>
       <h1>📦 日日加全方位門店巡檢</h1>
-      <p class="desc">點擊下方按鈕將以最高優先權喚醒雲端伺服器，自動巡檢 24 家門店「訂貨單詳情、日結報表、到貨帳單」，約 2～3 分鐘後直接推播結果至您的 LINE！</p>
+      <p class="desc">點擊下方按鈕將以最高優先權喚醒雲端伺服器，自動巡檢 26 家門店「訂貨單詳情、日結報表、到貨帳單」，約 10～15 分鐘後推播結果至您的 LINE。按一次就好，連按會排隊重跑。</p>
 
       <button id="runBtn" class="btn-trigger" onclick="triggerWorkflow()">
         🚀 立即啟動雲端巡檢
@@ -179,11 +179,16 @@
         const startStr = new Date(run.created_at).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei', hour12: false });
         timeEl.textContent = startStr;
 
+        const btnEl = document.getElementById('runBtn');
         if (run.status === 'in_progress' || run.status === 'queued' || run.status === 'waiting') {
-          contentEl.innerHTML = `<span class="dot dot-yellow"></span><strong>雲端正在執行巡檢中 (${run.status === 'queued' ? '排隊啟動中' : '正在巡檢 24 家門店'})...</strong><br><span style="font-size:12.5px;color:#94a3b8;">完成後會自動發送 LINE 通知給您，您可以直接關閉此畫面。</span>`;
+          btnEl.disabled = true;
+          btnEl.textContent = '⏳ 巡檢進行中，請稍候';
+          contentEl.innerHTML = `<span class="dot dot-yellow"></span><strong>雲端正在執行巡檢中 (${run.status === 'queued' ? '排隊啟動中' : '正在巡檢 26 家門店'})...</strong><br><span style="font-size:12.5px;color:#94a3b8;">完成後會自動發送 LINE 通知給您，您可以直接關閉此畫面。</span>`;
         } else if (run.conclusion === 'success') {
+          if (btnEl.textContent.indexOf('巡檢進行中') !== -1) { btnEl.disabled = false; btnEl.textContent = '🚀 再次啟動雲端巡檢'; }
           contentEl.innerHTML = `<span class="dot dot-green"></span><strong>上次巡檢執行成功！</strong><br><span style="font-size:12.5px;color:#94a3b8;">結果已推播至 LINE 並更新各店欠款轉發頁。</span>`;
         } else {
+          if (btnEl.textContent.indexOf('巡檢進行中') !== -1) { btnEl.disabled = false; btnEl.textContent = '🚀 立即啟動雲端巡檢'; }
           contentEl.innerHTML = `<span class="dot dot-red"></span><strong>上次狀態：${run.conclusion || run.status}</strong>`;
         }
       } catch (e) {}
@@ -208,7 +213,7 @@
 
         if (res.status === 204 || res.ok) {
           btn.textContent = '✅ 已成功喚醒雲端巡檢！';
-          contentEl.innerHTML = '<span class="dot dot-yellow"></span><strong>🚀 雲端巡檢已啟動！</strong><br><span style="font-size:12.5px;color:#94a3b8;">預計約 2～3 分鐘完成 24 家門店檢查並推播至您的 LINE，您現在可以直接返回 LINE 聊天室！</span>';
+          contentEl.innerHTML = '<span class="dot dot-yellow"></span><strong>🚀 雲端巡檢已啟動！</strong><br><span style="font-size:12.5px;color:#94a3b8;">預計約 10～15 分鐘完成 26 家門店檢查並推播至您的 LINE，您現在可以直接返回 LINE 聊天室！</span>';
           setTimeout(fetchLatestRun, 4500);
           setTimeout(() => {
             btn.disabled = false;
